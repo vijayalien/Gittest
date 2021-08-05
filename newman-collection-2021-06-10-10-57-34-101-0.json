@@ -1,0 +1,464 @@
+{
+  "_": {
+    "postman_id": "3b0ddbb4-9016-4352-990c-b4de164cd93a"
+  },
+  "item": [
+    {
+      "id": "d95e260e-25aa-4eab-802d-65419676030a",
+      "name": "Activities",
+      "item": [
+        {
+          "id": "4e2c6545-c7c4-434f-808a-2315b5f06fc5",
+          "name": "Get_Activities",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Activities"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json; v=1.0"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "89a3b338-1758-4abd-9604-7d51e9247e8a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200 test\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Assert value \", function(){\r",
+                  "    var data= pm.response.json();\r",
+                  "    res=data[2].title;\r",
+                  "    console.log(res);\r",
+                  "    pm.expect(res).to.eql(\"Activity 3\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "_lastExecutionId": "fe2c6979-9e9e-43f6-9340-d309026ec1fa"
+              }
+            }
+          ]
+        },
+        {
+          "id": "8fc2e309-bb20-4596-a1be-1d2ecc2aaada",
+          "name": "Post_Activities",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Activities"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json; v=1.0"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": {{id}},\r\n    \"title\": \"string\",\r\n    \"dueDate\": \"2021-06-04T05:52:38.846Z\",\r\n    \"completed\": true\r\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8bad5fed-1fb8-48b4-8902-7088addb1b22",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"check the status\",function(){\r",
+                  "let res= pm.response.json();\r",
+                  "status=res.completed;\r",
+                  "console.log(status);\r",
+                  "pm.expect(status).to.eql(true);\r",
+                  "})\r",
+                  "\r",
+                  ""
+                ],
+                "_lastExecutionId": "f5d1d5e5-3dc4-4fe3-9c01-fe4d3a459d8e"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ed32dbef-a3dd-4c7f-a87a-19a006dc9cb9",
+          "name": "Get_Activities {id}",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Activities",
+                "{{id}}"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "57884144-354f-4d27-97e8-2fe65b7830ee",
+          "name": "Delete_Activities {id}",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Activities",
+                "{{id}}"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "f30ecc29-9e01-4cd7-ab24-44a48da25272",
+          "name": "Put_Activities {id}",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Activities",
+                "{{id}}"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json; v=1.0"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 5,\r\n    \"title\": \"string\",\r\n    \"dueDate\": \"2021-06-04T05:56:06.827Z\",\r\n    \"completed\": true\r\n}"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1f728e77-48b7-4341-89d3-fd9935e77796",
+      "name": "Authors",
+      "item": [
+        {
+          "id": "df575bf8-cbee-46d6-8e32-0ff42bb6b468",
+          "name": "Get_Authors",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Authors"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "18c259db-5802-4c77-9b0a-159cd043f5ce",
+                "type": "text/javascript",
+                "exec": [
+                  "let res= pm.response.json();\r",
+                  "var first= res[3].firstName;\r",
+                  "var last=res[3].lastName;\r",
+                  "console.log(first,last);"
+                ],
+                "_lastExecutionId": "1484bcae-a018-4489-9f0b-74cdcd31195b"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e1d98c6c-dc61-48d7-b705-4d68fbf664f1",
+          "name": "Post_Authors",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Authors"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json; v=1.0"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 0,\r\n    \"idBook\": 0,\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\"\r\n}"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "06222002-42e0-4152-ad26-0569165f880d",
+          "name": "Get_authors/books/ {id}",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Authors",
+                "authors",
+                "books",
+                "2"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "2063ee8b-70f6-47bd-b087-69e2d8a25431",
+          "name": "Get_Authors {id}",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Authors",
+                "2"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "text/plain; v=1.0"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "b3878d48-cdf8-4efa-916c-3f90308917ce",
+          "name": "Delete _Authors {id}",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "Authors",
+                "2"
+              ],
+              "host": [
+                "fakerestapi",
+                "azurewebsites",
+                "net"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "43911f38-22bf-41e3-a756-762c600ba021",
+        "type": "text/javascript",
+        "exec": [
+          "console.log (\"this is test message pre -req\")"
+        ],
+        "_lastExecutionId": "25df92e2-fe6a-4f92-941a-9f1a81602add"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "7abe65d9-f0bc-4860-bfc3-7f3f650adf31",
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"status code is 200\", function (){",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "pm.test(\"time is less that 300 milliseconds\", function(){",
+          "    pm.expect(pm.response.responseTime).is.lessThan(300)",
+          "});",
+          "",
+          "console.log(\"this is after test message\")",
+          "",
+          ""
+        ],
+        "_lastExecutionId": "856de212-a342-44ae-bdac-a93647c57ec2"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "a50486c5-ac99-4dee-8b53-20d3b52b3192",
+      "type": "any",
+      "value": "2",
+      "key": "id"
+    }
+  ],
+  "info": {
+    "_postman_id": "3b0ddbb4-9016-4352-990c-b4de164cd93a",
+    "name": "Fake Rest Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "name": "collection",
+  "_postman_variable_scope": "collection",
+  "_postman_exported_at": "2021-06-10T10:57:34.090Z",
+  "_postman_exported_using": "Newman/5.2.2"
+}
